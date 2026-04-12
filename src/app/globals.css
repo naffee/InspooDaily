@@ -1,26 +1,179 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf9f6;
+  --foreground: #303330;
+  
+  /* InspoDaily Extended Palette */
+  --surface: #faf9f6;
+  --surface-variant: #e1e3df;
+  --surface-container-low: #f4f4f0;
+  --surface-container: #eeeeea;
+  --surface-container-high: #e8e8e4;
+  --surface-container-highest: #e1e3df;
+  --surface-dim: #d9dbd6;
+  --surface-bright: #faf9f6;
+  
+  --primary: #ac2d5e;
+  --primary-dim: #9c1f52;
+  --primary-container: #ffa8c0;
+  --on-primary: #fff7f7;
+  --on-primary-container: #7c003b;
+  
+  --secondary: #066b5e;
+  --secondary-container: #a8fbe9;
+  --on-secondary: #e3fff7;
+  --on-secondary-container: #006256;
+  
+  --tertiary: #745c00;
+  --tertiary-container: #f5ce53;
+  --tertiary-fixed: #f5ce53;
+  --on-tertiary: #fff8ef;
+  
+  --outline: #797b78;
+  --outline-variant: #b1b2af;
+  --on-surface: #303330;
+  --on-surface-variant: #5d605c;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  
+  --color-surface: var(--surface);
+  --color-surface-variant: var(--surface-variant);
+  --color-surface-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-high: var(--surface-container-high);
+  --color-surface-highest: var(--surface-container-highest);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  
+  --color-primary: var(--primary);
+  --color-primary-dim: var(--primary-dim);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary: var(--on-primary);
+  --color-on-primary-container: var(--on-primary-container);
+  
+  --color-secondary: var(--secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary: var(--on-secondary);
+  --color-on-secondary-container: var(--on-secondary-container);
+  
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-tertiary-fixed: var(--tertiary-fixed);
+  
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  
+  --font-serif: var(--font-noto-serif), serif;
+  --font-manrope: var(--font-manrope), sans-serif;
+  
+  --shadow-editorial: 0px 20px 40px rgba(48, 51, 48, 0.06);
+
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.animate-bounce-slow {
+  animation: bounce-slow 4s ease-in-out infinite;
+}
+
+/* Atelier Editorial Content Styling */
+.atelier-content p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--font-noto-serif);
+  font-size: 5rem;
+  line-height: 0.8;
+  padding-top: 0.5rem;
+  padding-right: 0.75rem;
+  font-style: italic;
+  color: var(--primary);
+  text-transform: uppercase;
+}
+
+.atelier-content blockquote {
+  padding: 3rem 0;
+  margin: 3rem 0;
+  font-family: var(--font-noto-serif);
+  font-style: italic;
+  font-size: 2rem;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--on-surface);
+  position: relative;
+}
+
+.atelier-content blockquote::before {
+  content: "“";
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 6rem;
+  color: var(--primary-container);
+  opacity: 0.5;
+}
+
+.atelier-content h2, .atelier-content h3 {
+  font-family: var(--font-noto-serif);
+  font-style: italic;
+  color: var(--on-surface);
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.atelier-content h2 { font-size: 2.5rem; }
+.atelier-content h3 { font-size: 2rem; }
+
+.atelier-content img {
+  border-radius: 0.75rem;
+  margin: 3rem 0;
+  box-shadow: 0px 20px 40px rgba(48, 51, 48, 0.06);
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--on-surface);
+  font-family: var(--font-manrope);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Material Symbols Variable Settings */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+}
+
+/* Scrollbar Utility */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Specific Design Classes */
+.editorial-shadow {
+  box-shadow: var(--shadow-editorial);
 }
