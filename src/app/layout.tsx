@@ -19,6 +19,11 @@ import { SearchProvider } from "@/context/SearchContext";
 export const metadata: Metadata = {
   title: "InspoDaily | Premium Fashion, Lifestyle & Beauty",
   description: "Your daily source for curated fashion, skincare, makeup, travel and lifestyle.",
+  verification: {
+    other: {
+      "p:domain_verify": "4a74d0a7206d59b6cd323b4119341043",
+    },
+  },
 };
 
 export default function RootLayout({
